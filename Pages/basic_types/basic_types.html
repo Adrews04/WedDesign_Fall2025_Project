@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    
     <div class="header">
         <a href="../../index.html" class="back-button">← Back to Home</a>
         <div class="header-title">
@@ -16,7 +17,85 @@
             <h2>Basic Types</h2>
         </div>
     </div>
+
     <div class="content">
+        <div class="main-content">
+            <p>
+                This section we will go in depth on the basic types in programming languages
+                as well as how to apply them.
+            </p>
+            <h2>Basic types typically found within TypeScript</h2>
+            <table>
+                <tr class="table-header">
+                    <th>Basic Types</th>
+                    <th>Description</th>
+                    <th>Written Examples (variable declarations)</th>
+                </tr>
+                <tr>
+                    <td>number</td>
+                    <td>refers to integers</td>
+                    <td><code> let age: <strong>number</strong> = 27; </code></td>
+                </tr>
+                <tr>
+                    <td>string </td>
+                    <td>refers to any characters</td>
+                    <td><code> let name: <strong>string</strong> = "Hello World!"; </code></td>
+                </tr>
+                <tr>
+                    <td>boolean</td>
+                    <td>true or false values</td>
+                    <td><code> let isUserOnline: <strong>boolean</strong> = false;  </code></td>
+                </tr>
+                <tr>
+                    <td>null</td>
+                    <td>equal an empty value</td>
+                    <td><code> let totalCurrentClasses: <strong>null</strong> = null;  </code></td>
+                </tr>
+                <tr>
+                    <td>undefined</td>
+                    <td>not clear or defined</td>
+                    <td><code>let result: <strong>undefined</strong>;</code></td>
+                </tr>
+                <tr>
+                    <td>any</td>
+                    <td>holds any value and reassigned a different value later</td>
+                    <td><code>let givenInput: <strong>any</strong> = 00;</code></td>
+                </tr>
+                <tr>
+                    <td>void</td>
+                    <td>absence of a value</td>
+                    <td><code> function giveReport(): <strong>void</strong> { ... };</code></td>
+                </tr>
+            </table>
+            <h2>Overview of Static Types</h2>
+            <table>
+                <tr class="table-header">
+                    <th>Static Types</th>
+                    <th>Description</th>
+                    <th>Written Examples (variable declarations)</th>
+                </tr>
+                <tr>
+                    <td>Annotation</td>
+                    <td>assigning a type to variables, parameters, or return values</td>
+                    <td><code>let numVariable: <strong>number</strong> = 29;</code></td>
+                </tr>
+                <tr>
+                    <td>Nullable</td>
+                    <td>These are special case of <strong>union types</strong> that allow <strong>null</strong> or <strong>undefined</strong> value types</td>
+                    <td><code>let email: string | <strong>null</strong> = null;</code></td>
+                </tr>
+                <tr>
+                    <td>Union</td>
+                    <td>Allowing a variable to be one of multiple types using "<strong> | </strong>"</td>
+                    <td><code>let id: number <strong>|</strong> string;</code></td>
+                </tr>
+                <tr>
+                    <td>Unknown</td>
+                    <td>Safe alternative to the <strong>any</strong> keyword. Values of type <strong>unknown</strong> must be type-checked before being used or modified</td>
+                    <td><code>let givenData: <strong>unknown</strong>;</code></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 
