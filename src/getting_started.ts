@@ -1,8 +1,13 @@
-interface Window {
-    ts: typeof import("typescript");
-}
+//interface Window {
+//    ts: typeof import("typescript");
+//}
+//const localTs = window.ts;
 
-const localTs = window.ts;
+declare const ts: any;
+
+const localTs = ts;
+
+
 
 const codeInput = document.getElementById("codeInput") as HTMLTextAreaElement | null;
 const runBtn = document.getElementById("runBtn") as HTMLButtonElement | null;
