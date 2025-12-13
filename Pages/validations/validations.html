@@ -6,6 +6,11 @@
     <title>Typescript handbook</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="icon" href="../../assets/icons/Typescript.ico">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
 </head>
 
 <body>
@@ -13,11 +18,106 @@
         <a href="../../index.html" class="back-button">← Back to Home</a>
         <div class="header-title">
             <h1>Typescript programmer's handbook</h1>
-            <h2>Validations</h2>
+            <h2>Input Data Validations</h2>
         </div>
     </div>
-    <div class="content">
-    </div>
-</body>
 
+<div class="layout">
+    <div class="main-content">
+        <p>
+            Input Data Validation is the process of verifying that the data received by an application meets the expected
+            format, type, and constraints before it is processed. In web development, user input can come from forms,
+            URLs, or external sources, making validation a critical step to ensure correct and safe program behavior.
+
+            
+        </p>
+        <p>
+            Although TypeScript provides strong type checking at compile time, it does not automatically validate values
+            at runtime. This means that developers must manually implement validation logic to handle incorrect, missing,
+            or unexpected input values.
+        </p>
+
+        <h1>Why Input Data Validation Is Important</h1>
+        <p>
+            Validating input data helps prevent runtime errors, improves application reliability, and protects systems
+            from unexpected or malicious input. Without proper validation, applications may crash or behave incorrectly
+            when receiving invalid data.
+        </p>
+        <p>
+            Input validation is especially important in web applications, where users can freely modify form values
+            or send incorrect data intentionally or unintentionally.
+        </p>
+
+        <h1>Validating Numeric Input</h1>
+        <p>
+            Numeric input should be checked to ensure it falls within an acceptable range before being used by the
+            application.
+        </p>
+
+        <pre><code class="language-ts">function validateAge(age: number): boolean {
+            if (age <= 0 || age > 120) {
+                 return false;
+            }
+            return true;
+        }</code></pre>
+
+        <h1>Validating String Input</h1>
+
+        <p>
+            String input validation helps ensure that user-provided text is not empty and follows
+            basic rules, such as a minimum length.
+        </p>
+
+        <pre><code class="language-ts">function validateUsername(username: string): boolean {
+            if (username.trim().length < 3) {
+            return false;
+            }
+            return true;
+        }</code></pre>
+
+        <h1>Validating Email Input</h1>
+
+        <p>
+            Email validation checks whether a string follows a valid email format before it is processed
+            by the application. In this example, a regular expression is used to define the basic structure
+            of a valid email address.
+            The <code>.test()</code> method evaluates whether the provided string matches the pattern defined
+            by the regular expression and returns a boolean value.
+            This approach is very common in web applications, as email addresses are frequently required
+            for user registration, authentication, and contact forms.
+        </p>
+
+        <pre><code class="language-ts">function validateEmail(email: string): boolean {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }</code></pre>
+
+
+        <p>
+            In practice, input validation is commonly implemented at the edge of an application, such as when handling form submissions, processing API requests, 
+            or receiving data from external sources. These checks are typically performed before the logic is executed, ensuring that only valid data reaches the application's core. 
+            By validating input early, developers can simplify internal logic, reduce the need for defensive programming, and achieve more consistent error handling across the codebase.
+        </p>
+    </div>
+
+
+<aside class="example">
+    <h2>Example: Input Validation</h2>
+    <p>
+        Enter an age value and check whether it is considered valid based on a predefined range.
+    </p>
+    <pre><code>function validateAge(age: number): boolean {
+    return age > 0 && age <= 120;
+}</code></pre>
+    <label for="ageInput">Enter age:</label>
+    <input type="number" id="ageInput" />
+
+    <br><br>
+    <button id="validateBtn">Validate</button>
+    <p id="validationOutput" class="result-output">Result will appear here</p>
+
+    <script src="../../scripts/validations.js" defer></script>
+</aside>
+</div>
+</body>
 </html>

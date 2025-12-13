@@ -17,7 +17,7 @@
     "url": "https://github.com/Adrews04/WedDesign_Fall2025_Project/issues"
   },
   "homepage": "https://github.com/Adrews04/WedDesign_Fall2025_Project",
-  "dependencies": {
+  "devDependencies": {
     "typescript": "^5.9.3"
   }
 }
