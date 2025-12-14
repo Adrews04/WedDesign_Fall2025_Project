@@ -17,6 +17,107 @@
         </div>
     </div>
     <div class="content">
+        <div class="main-content">
+            <h2>Basic Function Components</h2>
+            <p>
+                In this section, we will go over how functions are formed and how they operate, showing the different
+                components that make up a basic function.
+            </p>
+            <table>
+                <tr class="table-header">
+                    <th>Terms</th>
+                    <th>Description</th>
+                    <th>Possible Code Examples</th>
+                </tr>
+                <tr>
+                    <td>function</td>
+                    <td>used to declare a basic function with the <strong>function</strong> keyword.</td>
+                    <td><code><strong>function</strong> greet(name: string): string { ... }</code></td>
+                </tr>
+                <tr>
+                    <td>parameter</td>
+                    <td><strong>variables</strong> listed in a function definition that receive values when the function
+                        is called.</td>
+                    <td><code>function greet(<strong>name: string</strong>): string { ... }</code></td>
+                </tr>
+                <tr>
+                    <td>function body</td>
+                    <td>refers to code written within a function used to complete tasks when called upon. The function
+                        body is always wrapped with <strong>braces { }</strong>.</td>
+                    <td><code>function greet(name: string): string <strong>{ ... }</strong></code></td>
+                </tr>
+                <tr>
+                    <td>function calling</td>
+                    <td>the act of executing a function by <strong>referencing</strong> its name and <strong>supplying
+                            arguments</strong>, if required
+                    </td>
+                    <td><code>
+                        <strong>greet("Emma");</strong>
+                    </code></td>
+                </tr>
+                <tr>
+                    <td>function return</td>
+                    <td>once the function finishes executing, the <strong>return</strong> keyword sends a value back to
+                        where the function was called.</td>
+                    <td><code>function greet(name: string): string <strong>{ return `Hello ${name}!`;}</strong></code>
+                    </td>
+                </tr>
+            </table>
+            <h2>Return Types</h2>
+            <p>
+                In this section, we will understand how TypeScript allows us to define the return value type of a
+                function.
+                <br> The highlighted section below refers to the type of return value the function will eventually
+                return.
+            </p>
+            <pre><code>function greet(name: string): string {
+    return `Hello ${name}!`;
+}
+</code></pre>
+
+            <p>
+                Other return values that have the ability to replace the keyword <strong>string</strong> in
+                <code>: string</code>
+            </p>
+            <table>
+                <tr class="table-header">
+                    <th>Return Type</th>
+                    <th>Description</th>
+                    <th>Use Cases</th>
+                </tr>
+                <tr>
+                    <td>number</td>
+                    <td>returns a numeric value</td>
+                    <td>function addTwo(value: number)<strong>: number</strong> { ... }</td>
+                </tr>
+                <tr>
+                    <td>boolean</td>
+                    <td>returns either <code>true</code> or <code>false</code></td>
+                    <td>function isGreeting(action: string)<strong>: boolean</strong> { ... }</td>
+                </tr>
+                <tr>
+                    <td>null</td>
+                    <td>indicates the absence of a value</td>
+                    <td>function greet(name: string): string <strong>| null</strong> { ... }</td>
+                </tr>
+                <tr>
+                    <td>undefined</td>
+                    <td>indicates no value and is rarely used as a return type</td>
+                    <td>function greet(name: string): string <strong>| undefined</strong> { ... }</td>
+                </tr>
+                <tr>
+                    <td>any</td>
+                    <td>disables TypeScript's type checking; use with caution</td>
+                    <td>function getStoredValue()<strong>: any</strong> { ... }</td>
+                </tr>
+                <tr>
+                    <td>void</td>
+                    <td>returns no value</td>
+                    <td>function giveStatusUpdate(message: string)<strong>: void</strong> { ... }</td>
+                </tr>
+            </table>
+
+        </div>
     </div>
 </body>
 
