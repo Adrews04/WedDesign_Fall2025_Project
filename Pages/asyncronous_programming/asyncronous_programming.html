@@ -6,6 +6,11 @@
     <title>Typescript handbook</title>
     <link rel="stylesheet" href="../../styles.css">
     <link rel="icon" href="../../assets/icons/Typescript.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 
 <body>
@@ -16,7 +21,116 @@
             <h2>Asynchronous Programming</h2>
         </div>
     </div>
-    <div class="content">
+    <div class="layout">
+        <main class="main-content">
+            <p>Asynchronous programming is a paradigm (a style of programming) that allows a program to start a
+                long-running task and still be able to respond to other events while that task runs in the background.
+                The opposite of asynchronous is synchronous programming, where tasks are executed one after the other,
+                and a task must complete before the next one can begin.</p>
+            <p>
+                Asynchronous code is non-blocking. It tells the program to start this long-running task now, without
+                waiting for it. That it should move on to the next instruction in the code.
+                Now, when the task is finally finished, the code should be prepared to handle the result.
+            </p>
+
+            <h1>The Core Reason</h1>
+            <p>The primary environment for TypeScript, the browser, uses a single-threaded architecture for executing
+                TypeScript code. This single thread is often called the "main thread".</p>
+            <p>If a task that takes a long time is executed synchronously, the single thread gets blocked during that
+                task's execution.
+                While the thread is blocked, the browser becomes unresponsive. The user can't click buttons,
+                animations freeze, and the user experience is ruined.</p>
+            <h1>Core Concepts</h1>
+            <h2>'Promise' Concept</h2>
+            <p>A Promise is an object that represents the eventual completion or failure of an asynchronous operation
+                and its resulting value.</p>
+            <p>This Promise doesn't contain the final data yet; it simply promises that it will produce a result, or an
+                error, sometime in the future. The Promise object acts as a placeholder for the result,
+                allowing the synchronous code to keep running
+                while the background work finishes.</p>
+            <p>It has two key methods: <code>then</code> and <code>catch</code>. The <code>then</code> method is used to
+                handle the resolved value, while the <code>catch</code> method is used to handle any errors that may
+                occur during the asynchronous operation.</p>
+            <h3>General Promise Syntax</h3>
+            <pre><code>promise
+  .then((data) => {
+    console.log("SUCCESS:", data);
+    return "Processed " + data;
+  })
+  .catch((error) => {
+    console.error("ERROR:", error.message);
+  });</code></pre>
+            <h2>'Async' Keyword</h2>
+            <p>It declares any function as asynchronous</p>
+            <p>It must be placed immediately before the function keyword, before the parameter list for an arrow
+                function, or within an object method definition.</p>
+            <table>
+                <tr class="table-header">
+                    <th>Function Type</th>
+                    <th>Syntax</th>
+                </tr>
+                <tr>
+                    <td>Declaration</td>
+                    <td><code><strong>async</strong> function myFunc() { ... }</code></td>
+                </tr>
+                <tr>
+                    <td>Expression </td>
+                    <td><code> let myFunc = <strong>async</strong> function() { ... }</code></td>
+                </tr>
+                <tr>
+                    <td>Arrow Function</td>
+                    <td><code>const myFunc = <strong>async</strong> () => { ... }</code></td>
+                </tr>
+                <tr>
+                    <td>Object Method</td>
+                    <td><code>const obj = { <strong>async</strong> myFunc() { ... } }</code></td>
+                </tr>
+            </table>
+            <h2>'Await' Operator</h2>
+            <p>Gives the async function its non-blocking power. It can only be used inside an async function.</p>
+            <p>It is placed immediately before a Promise.</p>
+            <p>It tells the TypeScript runtime to pause the execution of the surrounding async function until the
+                Promise settles (either resolves or rejects). If the Promise resolves, await returns the resolved
+                value. If the Promise rejects, await throws an error, which can be caught using a standard try-catch
+                block.
+            </p>
+            <h1>Async Functions in TypeScript</h1>
+            <p>The general structure is the following:</p>
+            <pre><code>async function functionName(param1, param2) {
+    const result1 = await somePromiseReturningFunction();
+    console.log('Result 1 is ready. The next line will pause.');
+    const finalResult = await anotherAsyncOperation(result1);
+    return finalResult;
+}</code></pre>
+        </main>
+        <aside class="example">
+            <h2>Example: Async Function</h2>
+            <p>Run the function <code>printAsyncMessages</code> and look the order of the messages.</p>
+            </p>
+            <pre><code>async function printAsyncMessages() {
+    const delayMessage = (message: string, ms: number): Promise&lt;string&gt; =>
+        new Promise(resolve => setTimeout(() => resolve(message), ms));
+
+    const p1 = delayMessage("Message 1 (300ms delay)", 300);
+    const p2 = delayMessage("Message 2 (500ms delay)", 500);
+    const p3 = delayMessage("Message 3 (200ms delay)", 200);
+
+    console.log("Starting...\n");
+
+    await Promise.all([
+        p1.then(v => console.log(v)),
+        p2.then(v => console.log(v)),
+        p3.then(v => console.log(v)),
+    ]);
+}
+
+printAsyncMessages();</code></pre>
+            <button id="runExample">Run Example</button>
+            <pre><code id="exampleOutput">Output will appear here</code></pre>
+            <script src="../../scripts/asyncronous_programming.js"></script>
+            <p>As you can see, the order of printing depends on the delay, and not in the order that the functions were
+                called</p>
+        </aside>
     </div>
 </body>
 
